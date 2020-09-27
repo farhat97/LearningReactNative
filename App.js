@@ -1,33 +1,27 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TabBarIOS } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import FooterMenu from './components/FooterMenu';
 import HomeScreen from './components/screens/HomeScreen';
 import AboutScreen from './components/screens/AboutScreen';
 
+// bottom navigation
+const bottomTabs = createBottomTabNavigator({
+  Home: { screen: HomeScreen },
+  About: { screen: AboutScreen }
+});
+const AppContainer = createAppContainer(bottomTabs);
+
 const App = () => {
   return (
     <View style={styles.container}>
       <AppContainer />
-      <FooterMenu />
     </View>
   );
 };
-
-const AppNavigator = createStackNavigator({
-  Home: { 
-    screen: HomeScreen, 
-    navigationOptions: { headerShown: false } 
-  },
-  About: { 
-    screen: AboutScreen,
-    navigationOptions: { headerShown: false } 
-  }
-});
-
-const AppContainer = createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
   container: {
