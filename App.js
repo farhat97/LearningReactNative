@@ -1,25 +1,41 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { View, Text, StyleSheet, TabBarIOS } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { MaterialCommunityIcons } from 'react-native-vector-icons/MaterialCommunityIcons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native'; 
 
 import FooterMenu from './components/FooterMenu';
 import HomeScreen from './components/screens/HomeScreen';
 import AboutScreen from './components/screens/AboutScreen';
+import FeedScreen from './components/screens/FeedScreen';
 
 // bottom navigation
-const bottomTabs = createBottomTabNavigator({
-  Home: { screen: HomeScreen },
-  About: { screen: AboutScreen }
-});
-const AppContainer = createAppContainer(bottomTabs);
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return(
+    <Tab.Navigator>
+      <Tab.Screen
+        name="Home"
+        component={ HomeScreen }
+      />
+
+      <Tab.Screen
+        name="About"
+        component={ AboutScreen }
+      />
+
+    </Tab.Navigator>
+  );
+}
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <AppContainer />
-    </View>
+    <NavigationContainer>
+      <MyTabs />  
+    </NavigationContainer>
   );
 };
 
