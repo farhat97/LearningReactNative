@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const AboutScreen = () => {
+const AccountScreen = () => {
   return (
     <View style={styles.container}>
-      <Text> This is the About Page </Text>
+      <Text style={styles.accountText}> This is the Account Page </Text>
     </View>
   );
 };
@@ -13,11 +13,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
-    aboutText: {
-        fontSize: 20,
+    accountText: {
+        fontSize: 30,
         justifyContent: "center",
         alignItems: "center"
     }
 });
 
-export default AboutScreen;
+export default AccountScreen;
